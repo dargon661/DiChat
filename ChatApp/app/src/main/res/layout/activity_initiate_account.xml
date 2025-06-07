@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InitiateAccount">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_veri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Profile info"
+            android:textColor="@color/black"
+            android:textSize="40dp" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:text="Provide your name and optional profile picture"
+            android:textColor="@color/gray"
+            android:textSize="18dp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profile_image"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_marginTop="40dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/default_profile_image"
+            android:scaleType="centerCrop"
+
+            app:shapeAppearanceOverlay="@style/CirculaImageViewStyle" />
+
+
+
+        <ImageView
+            android:id="@+id/select_image_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/profile_image"
+
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/circle_shape_image"
+            android:backgroundTintMode="@color/blue"
+            android:src="@drawable/camera_image"
+            app:tint="@color/white" />
+
+        <EditText
+            android:id="@+id/ICusername"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/edit_text_selector"
+            android:elevation="5dp"
+            android:hint="Enter name"
+            android:inputType="text"
+            android:paddingStart="14dp" />
+
+        <Button
+
+            android:id="@+id/ICbtn"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/blue"
+            android:text="Done" />
+        <ProgressBar
+            android:id="@+id/ICprogressBar"
+
+            android:layout_width="match_parent"
+            android:indeterminateTint="@color/blue"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

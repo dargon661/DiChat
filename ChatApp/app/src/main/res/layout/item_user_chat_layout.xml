@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+
+    android:layout_marginLeft="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edit_text_background"
+    android:elevation="2dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/IUCLprofile_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_profile_image"
+        app:shapeAppearance="@style/CirculaImageViewStyle" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@+id/IUCLprofile_image"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/IUCLuser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="10dp"
+
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/IUCLlastMessage"
+            android:layout_width="291dp"
+            android:layout_height="20dp"
+            android:text=""
+
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/IUCLtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:layout_marginLeft="5dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+
+        android:textSize="15dp" />
+
+</RelativeLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ChatFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:padding="10dp">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tv_veri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="DiChat"
+            android:textColor="@color/white"
+            android:textSize="28dp"
+            android:textStyle="bold" />
+
+        <!-- 🔍 Search Bar (Initially Hidden) -->
+        <EditText
+            android:id="@+id/searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/AMsearch"
+            android:layout_alignParentStart="true"
+            android:visibility="gone"
+            android:hint="Search..."
+            android:padding="5dp"
+
+
+            android:background="@drawable/edit_text_selector"
+            android:inputType="text"
+            android:maxLines="1" />
+
+        <!-- Inbox Icon -->
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/FCInvitesFrame"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true">
+            <ImageButton
+                android:id="@+id/FCInvites"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+
+                android:layout_marginEnd="10dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/inbox_icon"
+                app:tint="@color/white" />
+            <!-- Red notification dot -->
+            <View
+                android:id="@+id/notification_dot"
+                android:layout_width="12dp"
+                android:visibility="gone"
+                android:layout_height="12dp"
+                android:background="@drawable/red_circle"
+                android:layout_gravity="top|end"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="12dp"/>
+        </FrameLayout>
+
+        <!-- Search Icon -->
+        <ImageButton
+            android:id="@+id/AMsearch"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/FCInvitesFrame"
+            android:layout_marginEnd="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/search_icon"
+            app:tint="@color/white" />
+
+    </RelativeLayout>
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_below="@id/toolBar"
+        android:layout_height="1dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="9dp"
+        android:layout_width="match_parent"
+        android:layout_below="@id/divider2"
+        android:layout_height="wrap_content"
+        android:id="@+id/FCrecentChats"/>
+</RelativeLayout>

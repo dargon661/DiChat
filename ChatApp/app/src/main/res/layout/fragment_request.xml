@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".RequestFragment">
+    <RelativeLayout
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:backgroundTint="@color/blue"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="10dp">
+
+
+        <TextView
+            android:id="@+id/ACusername"
+            android:layout_toEndOf="@+id/FRback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:text="Requests"
+            android:textColor="@color/offwhite"
+            android:textStyle="bold"
+            android:textSize="28sp"
+            />
+
+
+
+        <ImageButton
+            android:id="@+id/FRback"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="right"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/arrow_back_icon"
+            app:tint="@color/offwhite"
+            tools:ignore="RtlHardcoded" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_below="@id/toolBar"
+        android:layout_height="1dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="9dp"
+        android:layout_width="match_parent"
+        android:layout_below="@id/divider2"
+        android:layout_height="wrap_content"
+        android:id="@+id/ARrequests"/>
+
+
+</RelativeLayout>

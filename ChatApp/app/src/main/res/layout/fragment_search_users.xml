@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchUsersFragment">
+
+    <RelativeLayout
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:padding="10dp">
+
+
+        <TextView
+            android:id="@+id/tv_veri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="DiChat"
+
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+
+
+    </RelativeLayout>
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_below="@id/toolBar"
+        android:layout_height="1dp" />
+
+    <!-- FrameLayout to overlay AMsearch on ICusername -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/SUAuserSearch"
+        android:layout_below="@id/divider2"
+        android:layout_margin="10dp">
+
+        <!-- ICusername (background layer) -->
+        <EditText
+            android:id="@+id/SUAeditTextSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/edit_text_selector"
+            android:elevation="2dp"
+            android:hint="username"
+            android:inputType="text"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp" />
+
+        <!-- AMsearch (foreground layer) -->
+        <ImageButton
+            android:id="@+id/SUAsearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:elevation="5dp"
+            android:src="@drawable/search_icon"
+            app:tint="@color/blue" />
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/SUAusers"
+        android:layout_marginTop="30dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/SUAuserSearch"
+        />
+
+</RelativeLayout>

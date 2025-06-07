@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+
+    tools:context=".ProfileFragment">
+    <RelativeLayout
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:padding="10dp">
+
+
+        <TextView
+            android:id="@+id/tv_veri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="DiChat"
+
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+        <ImageButton
+            android:id="@+id/FPlogout"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/icon_exit"
+
+            android:textSize="20sp"/>
+
+
+
+    </RelativeLayout>
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_below="@id/toolBar"
+        android:layout_height="1dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_below="@id/divider2"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Profile info"
+            android:textColor="@color/black"
+            android:textSize="40sp" />
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/FPprofile_image"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_marginTop="40dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/default_profile_image"
+            android:scaleType="centerCrop"
+
+            app:shapeAppearanceOverlay="@style/CirculaImageViewStyle" />
+
+
+
+        <ImageView
+            android:id="@+id/FPselect_image_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/profile_image"
+
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/circle_shape_image"
+            android:backgroundTintMode="@color/blue"
+            android:src="@drawable/camera_image"
+            app:tint="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/FBuserLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal">
+
+
+
+            <TextView
+
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+
+                android:text="Name"
+                android:textColor="@color/black"
+
+                android:textSize="20sp" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/FPuserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/send_icon" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/FBphoneLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="168dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+
+                android:text="Phone number"
+                android:textColor="@color/black"
+
+                android:textSize="20sp" />
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/FPphone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:layout_marginEnd="40dp"
+
+
+                    android:text=""
+
+                    android:textSize="15sp" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/FBDateinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="168dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+
+                android:text="Account created"
+                android:textColor="@color/black"
+
+                android:textSize="20sp" />
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/FPdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:layout_marginEnd="40dp"
+
+
+                    android:text=""
+
+                    android:textSize="15sp" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

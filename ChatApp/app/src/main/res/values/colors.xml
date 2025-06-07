@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#70B1FE</color>
+    <color name="green">#8BC34A</color>
+    <color name="red">#FF0000</color>
+    <color name="gray">#333333</color>
+    <color name="gray2">#B4B2B2</color>
+    <color name="offwhite">#FAFAFA</color>
+    <style name="CirculaImageViewStyle" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="Theme.YourApp" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Set the status bar color -->
+        <item name="android:statusBarColor">@color/blue</item>
+
+        <!-- Ensures light-colored icons if the status bar is dark -->
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+
+</resources>

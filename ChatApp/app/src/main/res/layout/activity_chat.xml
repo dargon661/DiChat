@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+
+    android:layout_width="match_parent"
+    android:layoutDirection="locale"
+    android:background="@color/offwhite"
+    android:layout_height="match_parent"
+    tools:context=".ChatActivity">
+
+    <RelativeLayout
+        android:id="@+id/ACtoolBar"
+        android:layout_width="match_parent"
+        android:backgroundTint="@color/blue"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="10dp">
+
+
+        <TextView
+            android:id="@+id/ACusername"
+            android:layout_toEndOf="@+id/ACprofile_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:text="UserName"
+            android:textColor="@color/offwhite"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ACprofile_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="1dp"
+            android:layout_toEndOf="@id/ACAback"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_profile_image"
+            app:shapeAppearance="@style/CirculaImageViewStyle" />
+
+
+        <ImageButton
+            android:id="@+id/ACAback"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="right"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/arrow_back_icon"
+            app:tint="@color/offwhite"
+            tools:ignore="RtlHardcoded" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_below="@id/ACtoolBar"
+        android:layout_height="1dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ACmessages"
+        android:layout_above="@+id/MessageMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ACtoolBar"
+        />
+    <RelativeLayout
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="75dp"
+        android:background="@color/offwhite"
+        android:id="@+id/MessageMenu"
+        android:padding="0dp">
+
+        <EditText
+            android:id="@+id/ACmsg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/edit_text_selector"
+            android:elevation="4dp"
+            android:hint="Message"
+            android:layout_centerInParent="true"
+            android:layout_toStartOf="@id/ACsend"
+            android:gravity="start|center_vertical"
+            android:inputType="text"
+            android:paddingStart="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginBottom="10dp"
+            tools:ignore="RtlSymmetry" />
+        <ImageButton
+            android:id="@+id/ACsend"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/send_icon"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            app:tint="@color/white"
+            android:background="@drawable/circele_shape_send_button"
+            android:padding="8dp"
+            android:layout_marginStart="2dp"/>
+
+
+
+
+
+
+    </RelativeLayout>
+</RelativeLayout>
+
+
+
+
+
+

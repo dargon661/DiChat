@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "568840713491",
+    "project_id": "dichat-10c0b",
+    "storage_bucket": "dichat-10c0b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:568840713491:android:587ac5b55e794ebf2716e6",
+        "android_client_info": {
+          "package_name": "adar.dar.chatapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgDpnzcHhDSFB3v_eeb_6aeEU7guh5pZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

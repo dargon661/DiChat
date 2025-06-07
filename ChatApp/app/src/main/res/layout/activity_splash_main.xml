@@ -19,7 +19,7 @@
       android:id="@+id/icon"
       android:layout_width="400dp"
       android:layout_height="400dp"
-      app:srcCompat="@drawable/chaticon" />
+      app:srcCompat="@drawable/dichat_icon" />
   <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"

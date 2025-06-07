@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             if (task.isSuccessful()) {
                 String token = task.getResult();
 
-                FireBaseUtil.currentUserDetails().update("fcmoken", token);
+                FireBaseUtil.currentUserDetails().update("fcmtoken", token);
 
             } else {
                 Log.e("fcm", "Failed to get token");

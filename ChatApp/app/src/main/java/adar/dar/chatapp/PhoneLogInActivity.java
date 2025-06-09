@@ -34,8 +34,11 @@ public class PhoneLogInActivity extends AppCompatActivity implements View.OnClic
 
     private void initViews() {
         next=findViewById(R.id.PLIbtn);
+        // Find the country code picker view from the layout
         countryCodePicker=findViewById(R.id.CountryCodePicker);
         phoneInput=findViewById(R.id.ICusername);
+        // Link the phone input EditText to the country code picker
+        // This allows the full number (country code + phone number) to be retrieved
         countryCodePicker.registerCarrierNumberEditText(phoneInput);
         next.setOnClickListener(this);
     }

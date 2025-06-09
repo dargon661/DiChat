@@ -138,24 +138,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         });
         backArrow.setOnClickListener(v -> onBackPressed());
 
-        // **Keyboard detection and moving EditText up**
-//        final View rootView = findViewById(R.id.main); // The root layout
-//        rootView.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
-//            Rect r = new Rect();
-//            rootView.getWindowVisibleDisplayFrame(r);
-//            int screenHeight = rootView.getRootView().getHeight();
-//            int keypadHeight = screenHeight - r.bottom;
-//
-//            if (keypadHeight > screenHeight * 0.15) { // If keyboard is visible
-//                findViewById(R.id.MessageMenu).setTranslationY(-keypadHeight+150);
-//
-//
-//            } else {
-//                findViewById(R.id.MessageMenu).setTranslationY(0); // Reset when keyboard closes
-//
-//
-//            }
-//        });
+
     }
 
 

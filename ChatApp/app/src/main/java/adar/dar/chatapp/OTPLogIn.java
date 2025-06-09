@@ -27,74 +27,86 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class OTPLogIn extends AppCompatActivity {
 
-     List<EditText> otpBoxes = new ArrayList<>();
+    // List of OTP input fields (EditTexts)
+    List<EditText> otpBoxes = new ArrayList<>();
+
     String phoneNumber;
-    Long timeoutSeconds = 60L;
+    Long timeoutSeconds = 60L; // OTP timeout duration
     Button next;
-    boolean sentAgain=false;
+    boolean sentAgain = false;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     TextView sendAgain;
     String verificationCode;
-    PhoneAuthProvider.ForceResendingToken  resendingToken;
+    PhoneAuthProvider.ForceResendingToken resendingToken;
     ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Enable edge-to-edge layout
         EdgeToEdge.enable(this);
         setContentView(R.layout.otp_log_in);
+
+        // Adjust for system UI insets (like status bar)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
+        // Initialize UI components and logic
         initView();
     }
 
     private void initView() {
+        // Set up the OTP input boxes
         initBoxes();
-        next=findViewById(R.id.ICbtn);
-        next.setVisibility(View.GONE);
-        progressBar=findViewById(R.id.OTIprogressBar);
-        sendAgain=findViewById(R.id.OLIsend);
+
+        next = findViewById(R.id.ICbtn);
+        next.setVisibility(View.GONE); // Hidden until OTP is sent
+
+        progressBar = findViewById(R.id.OTIprogressBar);
+        sendAgain = findViewById(R.id.OLIsend);
+
+        // Get the phone number passed from previous activity
         phoneNumber = getIntent().getExtras().getString("phone");
-        sendOtp(phoneNumber,false);
+
+        // Send the OTP for the first time
+        sendOtp(phoneNumber, false);
+
+        // Handle when "Next" is clicked (after entering OTP)
         next.setOnClickListener(v -> {
-            String enteredOtp="";
-            for(EditText et :  otpBoxes)
-            {
-                enteredOtp+=et.getText().toString();
+            String enteredOtp = "";
+            for (EditText et : otpBoxes) {
+                enteredOtp += et.getText().toString();
             }
-            PhoneAuthCredential credential =  PhoneAuthProvider.getCredential(verificationCode,enteredOtp);
+            // Create credential using entered OTP and verification code
+            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, enteredOtp);
             signIn(credential);
         });
 
-
+        // Handle "Send again" click for resending OTP
         sendAgain.setOnClickListener(view -> {
             progressBar.setVisibility(View.VISIBLE);
             next.setVisibility(View.GONE);
-            if(!sentAgain)
-            {
-                sendOtp(phoneNumber,true);
-                sentAgain=true;
+
+            if (!sentAgain) {
+                sendOtp(phoneNumber, true); // Resend OTP
+                sentAgain = true;
             }
         });
-
     }
 
-
-    void sendOtp(String phoneNumber,boolean isResend){
+    // Sends OTP to the provided phone number
+    void sendOtp(String phoneNumber, boolean isResend) {
         PhoneAuthOptions.Builder builder =
                 PhoneAuthOptions.newBuilder(mAuth)
                         .setPhoneNumber(phoneNumber)
@@ -102,96 +114,97 @@ public class OTPLogIn extends AppCompatActivity {
                         .setActivity(this)
                         .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
+                            // Called if verification is done automatically
                             @Override
                             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                                 signIn(phoneAuthCredential);
                             }
+
+                            // Called if verification fails
                             @Override
                             public void onVerificationFailed(FirebaseException e) {
                                 Log.e("FirebaseAuth", "Verification failed", e);
                                 Toast.makeText(getApplicationContext(), "Verification Failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
                             }
+
+                            // Called when the code is successfully sent
                             @Override
                             public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                 super.onCodeSent(s, forceResendingToken);
-
                                 Log.d("FirebaseAuth", "Code Sent: " + s);
-                                // Store verificationId to verify code later
+
+                                // Save verification code and resending token
                                 verificationCode = s;
                                 resendingToken = forceResendingToken;
+
                                 progressBar.setVisibility(View.GONE);
                                 next.setVisibility(View.VISIBLE);
                             }
-
                         });
-        if(isResend){
+
+        // Build the request and either send or resend OTP
+        if (isResend) {
             PhoneAuthProvider.verifyPhoneNumber(builder.setForceResendingToken(resendingToken).build());
-        }else{
+        } else {
             PhoneAuthProvider.verifyPhoneNumber(builder.build());
         }
-
     }
 
+    // Sign in using the provided PhoneAuthCredential
     private void signIn(PhoneAuthCredential phoneAuthCredential) {
-        mAuth.signInWithCredential(phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Intent intent = new Intent(OTPLogIn.this, InitiateAccount.class);
-                    intent.putExtra("phone", phoneNumber);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(OTPLogIn.this, "the code is not correct", Toast.LENGTH_SHORT).show();
-                    progressBar.setVisibility(View.GONE);
-                    next.setVisibility(View.VISIBLE);
-                }
-            }
-        });
+        mAuth.signInWithCredential(phoneAuthCredential)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Go to account setup screen
+                            Intent intent = new Intent(OTPLogIn.this, InitiateAccount.class);
+                            intent.putExtra("phone", phoneNumber);
+                            startActivity(intent);
+                        } else {
+                            // Invalid code
+                            Toast.makeText(OTPLogIn.this, "The code is not correct", Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
+                            next.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
     }
 
-
+    // Initialize and configure the 6-digit OTP input fields
     void initBoxes() {
         otpBoxes.add(findViewById(R.id.otp_digit_1));
-        otpBoxes.get(0).requestFocus();
+        otpBoxes.get(0).requestFocus(); // Start with first box focused
         otpBoxes.add(findViewById(R.id.otp_digit_2));
         otpBoxes.add(findViewById(R.id.otp_digit_3));
         otpBoxes.add(findViewById(R.id.otp_digit_4));
         otpBoxes.add(findViewById(R.id.otp_digit_5));
         otpBoxes.add(findViewById(R.id.otp_digit_6));
+
+        // Add text change listener to each box
         for (int i = 0; i < otpBoxes.size(); i++) {
             int index = i;
             otpBoxes.get(i).addTextChangedListener(new TextWatcher() {
+
                 @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    // Do nothing
-                }
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    if (s.length() == 1) {
-                        // Move to the next box if available
-                        if (index < otpBoxes.size() - 1) {
-                            otpBoxes.get(index + 1).requestFocus();
-                        }
+                    if (s.length() == 1 && index < otpBoxes.size() - 1) {
+                        // Move to next box
+                        otpBoxes.get(index + 1).requestFocus();
                     }
                 }
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                    if (s.length() == 0) {
-                        // Move to the previous box if available
-                        if (index > 0) {
-                            otpBoxes.get(index - 1).requestFocus();
-                        }
+                    if (s.length() == 0 && index > 0) {
+                        // Move to previous box if character is deleted
+                        otpBoxes.get(index - 1).requestFocus();
                     }
                 }
             });
         }
     }
 }
-
-
-
-
-
-
